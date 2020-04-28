@@ -271,7 +271,7 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
             case #selector(toggleDarkMode(_:)):
                 menuItem.state = isDarkMode ? NSControl.StateValue.on : NSControl.StateValue.off
             case #selector(toggleLargeArtwork(_:)):
-                menuItem.state = isCollapsed ? NSControl.StateValue.on : NSControl.StateValue.off
+                menuItem.state = isCollapsed ? NSControl.StateValue.off : NSControl.StateValue.on
                 return playerInfo.isPlaying
             case #selector(toggleFloatingWindow(_:)):
                 menuItem.state = isFloatingWindow ? NSControl.StateValue.on : NSControl.StateValue.off
