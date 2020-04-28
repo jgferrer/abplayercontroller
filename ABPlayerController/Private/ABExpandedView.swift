@@ -83,14 +83,14 @@ class ABExpandedView: ABView {
         if !animateFlag { return toggle(toFrame: frame) }
         if toggleAnimation?.isAnimating ?? false { return }
         let effect = isCollapsed ?
-            NSViewAnimationFadeInEffect : NSViewAnimationFadeOutEffect
-        let toggleThumbnail: [String: AnyObject] = [
-            NSViewAnimationTargetKey: thumbnail,
-            NSViewAnimationEffectKey: effect as AnyObject,
+            NSViewAnimation.EffectName.fadeIn : NSViewAnimation.EffectName.fadeOut
+        let toggleThumbnail: [NSViewAnimation.Key : Any] = [
+            NSViewAnimation.Key(rawValue: NSViewAnimation.Key.target.rawValue): thumbnail,
+            NSViewAnimation.Key(rawValue: NSViewAnimation.Key.effect.rawValue): effect as AnyObject,
         ]
-        let windowResize: [String: AnyObject] = [
-            NSViewAnimationTargetKey: window!,
-            NSViewAnimationEndFrameKey: NSValue(rect: frame),
+        let windowResize: [NSViewAnimation.Key : Any] = [
+            NSViewAnimation.Key(rawValue: NSViewAnimation.Key.target.rawValue): window!,
+            NSViewAnimation.Key(rawValue: NSViewAnimation.Key.endFrame.rawValue): NSValue(rect: frame),
         ]
         let animations = [toggleThumbnail, windowResize]
         toggleAnimation = NSViewAnimation(viewAnimations: animations)

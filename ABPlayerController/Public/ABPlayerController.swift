@@ -36,7 +36,7 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
         self.service = service
         self.playerInfo = service.playerInfo
         self.trackInfo = service.trackInfo
-        super.init(nibName: nil, bundle: Bundle(for: type(of: self)))!
+        super.init(nibName: nil, bundle: Bundle(for: type(of: self)))
         self.collapsedView = ABCollapsedView.fromNib(owner: self)
         self.expandedView = ABExpandedView.fromNib(owner: self)
         self.service.delegate = self
@@ -51,10 +51,10 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
     public var isFloatingWindow = false {
         didSet {
             if isFloatingWindow {
-                view.window!.level = Int(CGWindowLevelForKey(.floatingWindow))
+                view.window!.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.floatingWindow)))
             }
             else {
-                view.window!.level = Int(CGWindowLevelForKey(.normalWindow))
+                view.window!.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.normalWindow)))
             }
         }
     }
@@ -72,11 +72,11 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
         didSet {
             if isDarkMode {
                 view.window!.appearance = NSAppearance(
-                    named: NSAppearanceNameVibrantDark)
+                    named: NSAppearance.Name.vibrantDark)
             }
             else {
                 view.window!.appearance = NSAppearance(
-                    named: NSAppearanceNameVibrantLight)
+                    named: NSAppearance.Name.vibrantLight)
             }
             updateTint()
         }
@@ -86,8 +86,8 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
         super.viewDidLoad()
         view.addSubview(expandedView)
         view.addSubview(collapsedView)
-        expandedView.autoresizingMask = .viewNotSizable
-        collapsedView.autoresizingMask = .viewHeightSizable
+        expandedView.autoresizingMask = .none
+        collapsedView.autoresizingMask = .height
     }
 
     public override func viewWillAppear() {
@@ -155,7 +155,7 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
                               selector: #selector(incrementTime),
                               userInfo: nil,
                               repeats: true)
-            RunLoop.main.add(playTimer!, forMode: .commonModes)
+            RunLoop.main.add(playTimer!, forMode: RunLoop.Mode.common)
             autohideControls()
         }
     }
@@ -197,7 +197,7 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
                           selector: #selector(fadeOutControls),
                           userInfo: nil,
                           repeats: false)
-        RunLoop.main.add(fadeTimer!, forMode: .commonModes)
+        RunLoop.main.add(fadeTimer!, forMode: RunLoop.Mode.common)
     }
 
     private func autohideControls() {
@@ -214,7 +214,7 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
         if !playerInfo.isPlaying { return }
         if trackInfo.name == "" { return }
         collapsedView.showTrackInfo()
-        NSAnimationContext.current().duration = 0.5
+        NSAnimationContext.current.duration = 0.5
 
         NSAnimationContext.beginGrouping()
         collapsedView.fadeInTrackInfo()
@@ -223,7 +223,7 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
     }
 
     private var isCursorInFrame: Bool {
-        return NSPointInRect(NSEvent.mouseLocation(), view.window!.frame)
+        return NSPointInRect(NSEvent.mouseLocation, view.window!.frame)
     }
 
     private enum ViewType {
@@ -259,7 +259,7 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
         DispatchQueue.main.async { self.updateView() }
     }
 
-    public override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    @objc func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let action = menuItem.action else { return true }
         switch action {
             case #selector(togglePlayAction(_:)):
@@ -269,12 +269,12 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
             case #selector(pressedPreviousButton(_:)):
                 return playerInfo.isPlaying
             case #selector(toggleDarkMode(_:)):
-                menuItem.state = isDarkMode ? NSOnState : NSOffState
+                menuItem.state = isDarkMode ? NSControl.StateValue.on : NSControl.StateValue.off
             case #selector(toggleLargeArtwork(_:)):
-                menuItem.state = isCollapsed ? NSOffState : NSOnState
+                menuItem.state = isCollapsed ? NSControl.StateValue.on : NSControl.StateValue.off
                 return playerInfo.isPlaying
             case #selector(toggleFloatingWindow(_:)):
-                menuItem.state = isFloatingWindow ? NSOnState : NSOffState
+                menuItem.state = isFloatingWindow ? NSControl.StateValue.on : NSControl.StateValue.off
             default:
                 break
         }

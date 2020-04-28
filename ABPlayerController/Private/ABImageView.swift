@@ -19,7 +19,7 @@ class ABImageView: NSImageView, ABTintable {
     @IBInspectable var darkTint: NSImage?
 
     var isDarkMode: Bool {
-        return effectiveAppearance.name == NSAppearanceNameVibrantDark
+        return effectiveAppearance.name == NSAppearance.Name.vibrantDark
     }
 
     func updateTint() {

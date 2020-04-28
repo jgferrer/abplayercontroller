@@ -19,7 +19,7 @@ class ABButton: NSButton, ABTintable {
     @IBInspectable var darkTint: NSImage?
 
     var isDarkMode: Bool {
-        return effectiveAppearance.name == NSAppearanceNameVibrantDark
+        return effectiveAppearance.name == NSAppearance.Name.vibrantDark
     }
 
     func updateTint() {
@@ -30,7 +30,7 @@ class ABButton: NSButton, ABTintable {
         super.awakeFromNib()
         
         // Track cursor events to perform custom button highlighting
-        let options: NSTrackingAreaOptions = [
+        let options: NSTrackingArea.Options = [
             .mouseEnteredAndExited,
             .activeInActiveApp,
             .enabledDuringMouseDrag

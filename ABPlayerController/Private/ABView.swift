@@ -17,10 +17,10 @@ import Cocoa
 class ABView: NSView, ABTintable {
     /// Loads a nib file with the same name as the view.
     class func fromNib<T : NSView>(owner: Any?) -> T? {
-        var topLevelObjects = NSArray()
+        var topLevelObjects: NSArray? = NSArray()
         Bundle(for: self).loadNibNamed("\(self)", owner: owner,
                                        topLevelObjects: &topLevelObjects)
-        for object in topLevelObjects as [AnyObject] {
+        for object in topLevelObjects! {
             if object is T { return object as? T }
         }
         return nil
