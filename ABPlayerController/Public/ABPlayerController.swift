@@ -23,7 +23,7 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
     private var currentTime = 0.0
 
     /// The service object that controls audio playback.
-    public let service: ABPlayerService
+    public var service: ABPlayerService
     /// The object containing info on the audio player.
     public let playerInfo: ABPlayerInfo
     /// The object containing info on the current track.
