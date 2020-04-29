@@ -71,12 +71,17 @@ public class ABPlayerController: NSViewController, ABPlayerServiceDelegate {
     public var isDarkMode = false {
         didSet {
             if isDarkMode {
-                view.window!.appearance = NSAppearance(
-                    named: NSAppearance.Name.vibrantDark)
+                if #available(OSX 10.14, *) {
+                    view.window!.appearance = NSAppearance(
+                        named: NSAppearance.Name.darkAqua)
+                } else {
+                    view.window!.appearance = NSAppearance(
+                        named: NSAppearance.Name.vibrantDark)
+                }
             }
             else {
                 view.window!.appearance = NSAppearance(
-                    named: NSAppearance.Name.vibrantLight)
+                    named: NSAppearance.Name.aqua)
             }
             updateTint()
         }

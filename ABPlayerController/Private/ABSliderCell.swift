@@ -50,8 +50,13 @@ class ABSliderCell: NSSliderCell {
     }
 
     private var isDarkMode: Bool {
-        return (controlView?.effectiveAppearance.name ==
-            NSAppearance.Name.vibrantDark)
+        if #available(OSX 10.14, *) {
+            return (controlView?.effectiveAppearance.name ==
+                NSAppearance.Name.darkAqua)
+        } else {
+            return (controlView?.effectiveAppearance.name ==
+                NSAppearance.Name.vibrantDark)
+        }
     }
 
     private var elapsedTimeBarWidth: CGFloat {
