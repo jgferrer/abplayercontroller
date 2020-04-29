@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ABPlayerController" customModule="ABPlayerController" customModuleProvider="target"/>
@@ -51,7 +50,7 @@
                     </constraints>
                     <sliderCell key="cell" controlSize="mini" enabled="NO" state="on" alignment="left" maxValue="1" tickMarkPosition="above" sliderType="linear" id="D8A-DF-zBZ" userLabel="playbackSlider" customClass="ABSliderCell" customModule="ABPlayerController" customModuleProvider="target"/>
                 </slider>
-                <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pwi-5p-BqM" userLabel="titleField">
+                <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pwi-5p-BqM" userLabel="titleField">
                     <rect key="frame" x="25" y="360" width="244" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="Coz-Q7-Mao"/>
@@ -62,15 +61,15 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nzt-ag-jbH" userLabel="subtitleField">
+                <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nzt-ag-jbH" userLabel="subtitleField">
                     <rect key="frame" x="25" y="346" width="244" height="14"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Artist — Album" placeholderString="" id="4FO-lo-K4i" userLabel="subtitleField">
                         <font key="font" metaFont="systemUltraLight" size="11"/>
-                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fDA-zZ-LqL" userLabel="positionField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDA-zZ-LqL" userLabel="positionField">
                     <rect key="frame" x="4" y="3" width="68" height="13"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="--:--" id="CRM-QY-f7a" userLabel="positionField">
                         <font key="font" metaFont="systemLight" size="10"/>
@@ -78,7 +77,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sla-zx-OMX" userLabel="durationField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sla-zx-OMX" userLabel="durationField">
                     <rect key="frame" x="263" y="3" width="27" height="13"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="--:--" id="WLm-JH-f3Y" userLabel="durationField">
                         <font key="font" metaFont="systemLight" size="10"/>
@@ -86,7 +85,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oGy-GM-O0c" userLabel="dummyField">
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oGy-GM-O0c" userLabel="dummyField">
                     <rect key="frame" x="4" y="17" width="27" height="13"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="--:--" id="9TT-vp-W5G">
                         <font key="font" metaFont="systemLight" size="10"/>
@@ -221,8 +220,8 @@
         </customView>
     </objects>
     <resources>
-        <image name="ABArtwork" width="294" height="294"/>
-        <image name="ABArtworkDark" width="294" height="294"/>
+        <image name="ABArtwork" width="588" height="588"/>
+        <image name="ABArtworkDark" width="588" height="588"/>
         <image name="ABNextButton" width="40" height="40"/>
         <image name="ABNextButtonDark" width="40" height="40"/>
         <image name="ABPauseButton" width="40" height="40"/>
@@ -231,7 +230,7 @@
         <image name="ABPlayButtonDark" width="40" height="40"/>
         <image name="ABPreviousButton" width="40" height="40"/>
         <image name="ABPreviousButtonDark" width="40" height="40"/>
-        <image name="ABThumbnail" width="44" height="44"/>
-        <image name="ABThumbnailDark" width="44" height="44"/>
+        <image name="ABThumbnail" width="88" height="88"/>
+        <image name="ABThumbnailDark" width="88" height="88"/>
     </resources>
 </document>

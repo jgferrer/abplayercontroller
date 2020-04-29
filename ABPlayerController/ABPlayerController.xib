@@ -13,7 +13,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="active" id="a1c-nj-akf">
+        <visualEffectView blendingMode="behindWindow" material="underWindowBackground" state="active" id="a1c-nj-akf">
             <rect key="frame" x="0.0" y="0.0" width="294" height="382"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <point key="canvasLocation" x="262" y="252.5"/>
